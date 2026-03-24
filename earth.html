@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Earth Facts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .fact-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            line-height: 1.6;
+            transition: transform 0.3s ease;
+        }
+
+        .fact-box:hover {
+            transform: scale(1.02);
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.1s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .fact-counter {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌍 Earth Facts</h1>
+        <div class="fact-box" id="factDisplay">
+            Click the button to discover a fun fact about Earth!
+        </div>
+        <button onclick="showRandomFact()">Get Random Fact</button>
+        <div class="fact-counter">
+            Facts seen: <span id="counter">0</span>
+        </div>
+    </div>
+
+    <script>
+        const facts = [
+            "Earth is the only known planet to harbor life.",
+            "A year on Earth is 365.25 days, which is why we have leap years.",
+            "Earth's atmosphere is made up of 78% nitrogen and 21% oxygen.",
+            "Mount Everest is the tallest mountain on Earth at 29,032 feet (8,849 meters).",
+            "The Mariana Trench is the deepest part of the ocean at 35,876 feet (10,935 meters) deep.",
+            "Earth rotates on its axis once every 23 hours and 56 minutes.",
+            "About 71% of Earth's surface is covered by water.",
+            "The Earth's core temperature is about 9,932 degrees Fahrenheit (5,500°C).",
+            "Earth is the only planet in our solar system known to have life.",
+            "A day on Earth is getting longer by about 1.7 milliseconds every century.",
+            "The Great Barrier Reef is the largest coral reef system on Earth.",
+            "Earth's magnetic field protects us from harmful solar radiation.",
+            "Antarctica is home to about 90% of the world's ice.",
+            "The Amazon Rainforest produces about 20% of the world's oxygen.",
+            "Earth has one natural satellite: the Moon.",
+            "The Pacific Ocean is larger than all of Earth's land area combined.",
+            "Earth's diameter at the equator is 7,926 miles (12,756 kilometers).",
+            "Forests cover about 30% of Earth's land surface.",
+            "Earth orbits the Sun at an average speed of 67,000 mph (107,000 km/h).",
+            "The Sahara Desert is the largest hot desert on Earth.",
+            "Earth has experienced five major mass extinction events in its history.",
+            "The oldest rock on Earth is over 4 billion years old.",
+            "Plate tectonics cause continents to move about 1-2 inches (2.5-5 cm) per year.",
+            "Earth's atmosphere extends about 100 kilometers (62 miles) above the surface.",
+            "The human body contains some of the same elements found in Earth's crust."
+        ];
+
+        let factsDisplayed = 0;
+
+        function showRandomFact() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('factDisplay');
+            
+            factDisplay.style.transition = 'none';
+            factDisplay.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                factDisplay.textContent = facts[randomIndex];
+                factDisplay.style.transition = 'opacity 0.3s ease';
+                factDisplay.style.opacity = '1';
+            }, 150);
+
+            factsDisplayed++;
+            document.getElementById('counter').textContent = factsDisplayed;
+        }
+
+        // Display a random fact on page load
+        window.addEventListener('load', showRandomFact);
+    </script>
+</body>
+</html>
